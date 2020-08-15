@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Articulo from './views/Articulo.vue'
 import Contacto from './views/Contacto.vue'
+import Client from './views/Client.vue'
 import NotFound from './views/NotFound.vue'
 
 Vue.use(Router)
@@ -22,8 +23,17 @@ export default new Router({
       component: Articulo
     },
     {
+      path: '/cliente/:customer?',
+      name: 'Cliente',
+      component: Client,
+      props: (route) => ({
+        cliente: route.params.customer
+        // <--route queda dinamica, parametro (en este caso customer) poderia ser cualquier cosa + usar solo cliente/ da el defecto -->
+      })
+    },
+    {
       path: '/contacto',
-      name: 'contacto',
+      name: 'Contacto',
       component: Contacto
     },
     {

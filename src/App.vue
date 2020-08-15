@@ -9,7 +9,7 @@
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item" role="presentation" ><router-link to="/">Home</router-link></li>
               <li class="nav-item" role="presentation" ><router-link to="/about">About</router-link></li>
-              <li class="nav-item" role="presentation" ><router-link to="/contacto">Contacto</router-link></li>
+              <li class="nav-item" role="presentation" ><router-link to="{name: 'Contacto'}">Contacto</router-link></li>
               <li class="nav-item" role="presentation" ><router-link to="/post/1">Articulo</router-link></li>
             </ul>
           </div>
