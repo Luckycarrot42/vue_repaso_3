@@ -1,45 +1,40 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Inicio from './components/Inicio'
-import SobreMi from './components/SobreMi'
-import Contacto from './components/Contacto'
-import Post from './components/Post'
-import Articulo from './components/Articulo'
-import NotFound from './components/NotFound'
+import Home from './views/Home.vue'
+import Articulo from './views/Articulo.vue'
+import Contacto from './views/Contacto.vue'
+import NotFound from './views/NotFound.vue'
+
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history', 
-    routes: [
-        {
-            path: '/',
-            name: 'inicio',
-            component: Inicio
-        },
-        {
-            path: '/sobremi',
-            name: 'sobremi',
-            component: SobreMi
-        },
-        {
-            path: '/contacto',
-            name: 'contacto',
-            component: Contacto
-        },
-        {
-            path: '/post',
-            name: 'post',
-            component: Post,
-            children: [
-                {
-                    path: ':articulo',
-                    component: Articulo,
-                }
-            ]
-        },
-        {
-            path: '*',
-            component: NotFound
-        }
-    ]
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/post/:number',
+      name: 'articulo',
+      component: Articulo
+    },
+    {
+      path: '/contacto',
+      name: 'contacto',
+      component: Contacto
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/*',
+      name: 'notfound',
+      component: NotFound
+    }
+  ]
 })
